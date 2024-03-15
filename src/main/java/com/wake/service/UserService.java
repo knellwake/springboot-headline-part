@@ -2,6 +2,7 @@ package com.wake.service;
 
 import com.wake.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wake.utils.Result;
 
 /**
 * @author Administrator
@@ -10,4 +11,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
 
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    Result login(User user);
 }
