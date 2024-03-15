@@ -17,4 +17,25 @@ public interface UserService extends IService<User> {
      * @return
      */
     Result login(User user);
+
+    /**
+     * 根据请求头token获取用户信息
+     * @param token
+     * @return
+     */
+    Result getUserInfo(String token);
+
+    /**
+     * 用户注册时验证用户名是否占用
+     * @param username
+     * @return
+     */
+    Result checkUserName(String username);
+
+    /**
+     * 用户注册
+     * @param user
+     * @return
+     */
+    Result register(User user);
 }

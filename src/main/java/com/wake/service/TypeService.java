@@ -2,6 +2,7 @@ package com.wake.service;
 
 import com.wake.pojo.Type;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wake.utils.Result;
 
 /**
 * @author Administrator
@@ -10,4 +11,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface TypeService extends IService<Type> {
 
+    /**
+     * 查询首页分类
+     * @return
+     */
+    Result findAllTypes();
 }

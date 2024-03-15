@@ -23,4 +23,22 @@
         create_time,update_time,version,
         is_deleted
     </sql>
+    <select id="selectMyPage" resultType="map">
+        select hid,title,type,page_views pageViews,TIMESTAMPDIFF(HOUR,create_time,NOW()) pastHours,
+        publisher from news_headline where is_deleted=0
+        <if test="portalVo.keyWords !=null and portalVo.keyWords.length()>0 ">
+            and title like concat('%',#{portalVo.keyWords},'%')
+        </if>
+        <if test="portalVo.type != null and portalVo.type != 0">
+            and type = #{portalVo.type}
+        </if>
+    </select>
+    <select id="selectDetailByHidMap" resultType="map">
+        select hid,title,article,type, h.version ,tname typeName ,page_views pageViews
+             ,TIMESTAMPDIFF(HOUR,create_time,NOW()) pastHours,publisher
+             ,nick_name author from news_headline h
+                                        left join news_type t on h.type = t.tid
+                                        left join news_user u  on h.publisher = u.uid
+        where hid = #{hid}
+    </select>
 </mapper>
